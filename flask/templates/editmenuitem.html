@@ -1,25 +1,34 @@
-<body>
-<h1> Edit Menu Item </h1>
+{% extends "bootstrap/base.html" %}
+{% block title %}Edit Menu Item{% endblock %}
 
-<form action="{{url_for('editMenuItem', restaurant_id=restaurant_id, menu_id=item.id )}}" method = 'POST'>
+{% block navbar %}
+<div class="navbar navbar-fixed-top">
+  <!-- ... -->
+</div>
+{% endblock %}
 
-<p>Name:
+{% block content %}
+<div class="container">
+	<h1>Edit Menu Item</h1>
 
-<input type='text' size='30' name='name' value='{{item.name}}'>
-</p>
-<p>Price ($):
+	<form action="{{url_for('editMenuItem', restaurant_id=restaurant_id, menu_id=item.id )}}" method = 'POST'>
 
-<input type='text' size='6' name='price' value='{{item.price}}'>
-</p>
-<p>Description:
+	<p>Name:
 
-<input type='text' size='50' name='description' value='{{item.description}}'>
-</p>
-<input type='submit' value='Update'>
+	<input type='text' size='30' name='name' value='{{item.name}}'>
+	</p>
+	<p>Price ($):
 
-<a href='{{url_for('restaurantMenu', restaurant_id = restaurant_id)}}'>Cancel</a>
+	<input type='text' size='6' name='price' value='{{item.price}}'>
+	</p>
+	<p>Description:
 
-</form>
+	<input type='text' size='50' name='description' value='{{item.description}}'>
+	</p>
+	<input type='submit' value='Update'>
 
-</body>
-</html>
+	<a href='{{url_for('restaurantMenu', restaurant_id = restaurant_id)}}'>Cancel</a>
+
+	</form>
+</div>
+{% endblock %}

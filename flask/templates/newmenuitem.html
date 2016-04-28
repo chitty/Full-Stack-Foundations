@@ -1,23 +1,32 @@
-<body>
-<h1> New Menu Item </h1>
+{% extends "bootstrap/base.html" %}
+{% block title %}New Menu Item{% endblock %}
 
-<form action="{{url_for('newMenuItem', restaurant_id=restaurant_id )}}" method = 'POST'>
+{% block navbar %}
+<div class="navbar navbar-fixed-top">
+  <!-- ... -->
+</div>
+{% endblock %}
 
-<p>Name:
+{% block content %}
+<div class="container">
+	<h1>New Menu Item</h1>
 
-<input type='text' size='30' name='name'>
-</p>
-<p>Price ($):
+	<form action="{{url_for('newMenuItem', restaurant_id=restaurant_id )}}" method = 'POST'>
 
-<input type='text' size='6' name='price'>
-</p>
-<p>Description:
+	<p>Name:
 
-<input type='text' size='50' name='description'>
-</p>
-<input type='submit' value='Create'>
+	<input type='text' size='30' name='name'>
+	</p>
+	<p>Price ($):
 
-</form>
+	<input type='text' size='6' name='price'>
+	</p>
+	<p>Description:
 
-</body>
-</html>
+	<input type='text' size='50' name='description'>
+	</p>
+	<input type='submit' value='Create'>
+
+	</form>
+</div>
+{% endblock %}

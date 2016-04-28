@@ -1,15 +1,22 @@
-<html>
+{% extends "bootstrap/base.html" %}
+{% block title %}Delete Item{% endblock %}
 
-<body>
-<h1> Are you sure you want to delete {{item.name}}? </h1>
+{% block navbar %}
+<div class="navbar navbar-fixed-top">
+  <!-- ... -->
+</div>
+{% endblock %}
 
-<form action="{{ url_for('deleteMenuItem',restaurant_id = item.restaurant_id, menu_id=item.id)}}" method = 'post'>
+{% block content %}
+<div class="container">
+	<h1> Are you sure you want to delete {{item.name}}? </h1>
 
-<input type='submit', value = 'Delete'>
+	<form action="{{ url_for('deleteMenuItem',restaurant_id = item.restaurant_id, menu_id=item.id)}}" method = 'post'>
 
-</form>
+	<input type='submit', value = 'Delete'>
 
-<a href = "{{ url_for('restaurantMenu', restaurant_id = restaurant_id)}}"> Cancel </a>
-</body>
+	</form>
 
-</html>
+	<a href = "{{ url_for('restaurantMenu', restaurant_id = restaurant_id)}}"> Cancel </a>
+</div>
+{% endblock %}

@@ -1,44 +1,44 @@
-<html>
-<head>
-	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css')}}"
-</head>
+{% extends "bootstrap/base.html" %}
+{% block title %}{{restaurant.name}}{% endblock %}
 
-<body>
+{% block navbar %}
+<div class="navbar navbar-fixed-top">
+  <!-- ... -->
+</div>
+{% endblock %}
 
-<h1>{{restaurant.name}}</h1>
+{% block content %}
+<div class="container">
+	<h1>{{restaurant.name}}</h1>
 
-{% with messages = get_flashed_messages() %}
-	{% if messages %}
-	<ul>
-	{%for message in messages %}
-		<li><strong>{{message}}</strong></li>
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+		<ul>
+		{%for message in messages %}
+			<li><strong>{{message}}</strong></li>
+		{% endfor %}
+		</ul>
+		{% endif %}
+	{% endwith %}
+
+	<a class="btn btn-primary" href="{{url_for('newMenuItem', restaurant_id = restaurant.id)}}" role="button">Create New Item</a>
+
+	{% for i in items %}
+
+		<div>
+
+		<p>{{i.name}}</p>
+		<p>{{i.description}}</p>
+		<p>{{i.price}}</p>
+
+		<p>
+
+		<a class="btn btn-primary" href="{{url_for('editMenuItem', restaurant_id = restaurant.id, menu_id = i.id)}}" role="button">Edit</a>
+		<a class="btn btn-primary" href="{{url_for('deleteMenuItem', restaurant_id = restaurant.id, menu_id = i.id)}}" role="button">Delete</a>
+		</p>
+
+		</div>
+
 	{% endfor %}
-	</ul>
-	{% endif %}
-{% endwith %}
-
-<a href="{{url_for('newMenuItem', restaurant_id = restaurant.id)}}">Create New Item</a>
-
-{% for i in items %}
-
-	<div>
-
-	<p>{{i.name}}</p>
-
-	<p>{{i.description}}</p>
-
-	<p> {{i.price}} </p>
-
-	<p>
-	<a href="{{url_for('editMenuItem', restaurant_id = restaurant.id, menu_id = i.id)}}">Edit</a> 
-
-	<a href="{{url_for('deleteMenuItem', restaurant_id = restaurant.id, menu_id = i.id)}}">Delete</a>
-	</p>
-
-	</div>
-
-
-{% endfor %}
-</body>
-
-</html>
+</div>
+{% endblock %}
