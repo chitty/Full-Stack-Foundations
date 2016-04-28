@@ -13,21 +13,26 @@
 
 	<form action="{{url_for('editMenuItem', restaurant_id=restaurant_id, menu_id=item.id )}}" method = 'POST'>
 
-	<p>Name:
+	  <div class="form-group">
+	    <label for="itemName">Name</label>
+	    <input name='name' class="form-control" placeholder="Name" value="{{item.name}}">
+	  </div>
+	  <div class="form-group">
 
-	<input type='text' size='30' name='name' value='{{item.name}}'>
-	</p>
-	<p>Price ($):
+	    <label for="itemPrice">Price</label>
+	    <div class="input-group">
+		    <div class="input-group-addon">$</div>
+		    <input name='price' class="form-control" placeholder="Price" value="{{item.price}}">
+		</div>
+	  </div>
+	  <div class="form-group">
+	    <label for="itemDescription">Description</label>
+	    <textarea name='description' class="form-control" rows="3" placeholder="Description">{{item.description}}</textarea>
+	  </div>
 
-	<input type='text' size='6' name='price' value='{{item.price}}'>
-	</p>
-	<p>Description:
+	  <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Update</button>
 
-	<input type='text' size='50' name='description' value='{{item.description}}'>
-	</p>
-	<input type='submit' value='Update'>
-
-	<a href='{{url_for('restaurantMenu', restaurant_id = restaurant_id)}}'>Cancel</a>
+	  <a class="btn btn-danger" href="{{url_for('restaurantMenu', restaurant_id = restaurant_id)}}" role="button"><span class="glyphicon glyphicon-menu-left"></span> Cancel</a>
 
 	</form>
 </div>

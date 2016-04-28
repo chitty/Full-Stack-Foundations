@@ -21,7 +21,7 @@
 		{% endif %}
 	{% endwith %}
 
-	<a class="btn btn-primary" href="{{url_for('newMenuItem', restaurant_id = restaurant.id)}}" role="button">Create New Item</a>
+	<a class="btn btn-primary" href="{{url_for('newMenuItem', restaurant_id = restaurant.id)}}" role="button"><span class="glyphicon glyphicon-plus"></span> New Item</a>
 
 	{% for i in items %}
 
@@ -29,12 +29,12 @@
 
 		<p>{{i.name}}</p>
 		<p>{{i.description}}</p>
-		<p>{{i.price}}</p>
+		<p>${{i.price}}</p>
 
 		<p>
 
-		<a class="btn btn-primary" href="{{url_for('editMenuItem', restaurant_id = restaurant.id, menu_id = i.id)}}" role="button">Edit</a>
-		<a class="btn btn-primary" href="{{url_for('deleteMenuItem', restaurant_id = restaurant.id, menu_id = i.id)}}" role="button">Delete</a>
+		<a class="btn btn-primary" href="{{url_for('editMenuItem', restaurant_id = restaurant.id, menu_id = i.id)}}" role="button"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+		<a class="btn btn-danger" href="{{url_for('deleteMenuItem', restaurant_id = restaurant.id, menu_id = i.id)}}" role="button"><span class="glyphicon glyphicon-remove"></span> Delete</a>
 		</p>
 
 		</div>
